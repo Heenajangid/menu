@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Send SMS</title>
+
+</head>
+
+<body>
+
+    <h1>Send SMS</h1>
+
+    <form action="/cgi-bin/send_sms.py" method="post">
+
+        <label for="sender_number">Sender's Mobile Number (in E.164 format, e.g., +1234567890):</label>
+
+        <input type="text" id="sender_number" name="sender_number" required>
+
+        <br>
+
+        <label for="message_body">Message:</label>
+
+        <textarea id="message_body" name="message_body" required></textarea>
+
+        <br>
+
+        <input type="submit" value="Send SMS">
+
+    </form>
+
+</body>
+
+</html>
