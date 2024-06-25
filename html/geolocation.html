@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Coordinates</title>
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            text-align: center;
+        }
+        #searchForm {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #searchForm input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #searchForm button {
+            padding: 10px 20px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        #results h3 {
+            margin-top: 20px;
+        }
+        #results p {
+            margin-bottom: 10px;
+        }
+        #homeButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: 100px;
+        }
+        #homeButton:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+    <center>
+    <h1>Get Coordinates</h1>
+    <form action="/cgi-bin/geolocation.py" method="get">
+        <label for="location">Enter location:</label>
+        <input type="text" id="location" name="location">
+        <button type="submit">Get Coordinates</button>
+    </center>
+    </form>
+    <center>
+    <div id="result"></div>
+    </center>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var location = document.getElementById('location').value;
+            fetch('/cgi-bin/geolocation.py?location=' + encodeURIComponent(location))
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = JSON.stringify(data);
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
