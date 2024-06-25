@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open gnome-terminal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .home-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: 100px;
+        }
+        .home-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Open gnome-terminal via CGI Script</h1>
+        <button class="home-btn" onclick="goToHome()">Home</button>
+        <form action="/cgi-bin/gnome_terminal_open.py" method="get">
+            <input type="submit" value="Open gnome-terminal">
+        </form>
+    </div>
+    <script>
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
