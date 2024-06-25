@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Bulk Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input[type="text"], textarea {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #homeButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: 100px;
+        }
+        #homeButton:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Send Bulk Email</h1>
+        <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+        <form action="/cgi-bin/send_bulk_email.py" method="post">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br><br>
+
+            <label for="body">Body:</label><br>
+            <textarea id="body" name="body" required></textarea><br><br>
+
+            <label for="recipients">Recipients (comma-separated):</label><br>
+            <input type="text" id="recipients" name="recipients" required><br><br>
+
+            <input type="submit" value="Send Emails">
+        </form>
+    </center>
+</body>
+</html>
