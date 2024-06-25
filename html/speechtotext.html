@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice to Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        #homeButton, #startButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: auto;
+        }
+        #homeButton:hover, #startButton:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                alert("Your browser does not support Speech Recognition. Please use a supported browser like Chrome.");
+                return;
+            }
+
+            var recognition = new SpeechRecognition();
+
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = "en-US";
+
+            recognition.onresult = function(event) {
+                var final_transcript = "";
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        final_transcript += event.results[i][0].transcript;
+                    }
+                }
+                document.getElementById("text").innerHTML = final_transcript;
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Speech Recognition Error: ", event.error);
+                alert("An error occurred: " + event.error);
+            };
+
+            recognition.onstart = function() {
+                console.log("Speech recognition service has started");
+            };
+
+            recognition.onend = function() {
+                console.log("Speech recognition service disconnected");
+            };
+
+            document.getElementById('startButton').onclick = function() {
+                // Check for the getUserMedia API
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        console.log("Microphone permission granted.");
+                        recognition.start();
+                    })
+                    .catch(function(err) {
+                        console.error("Microphone permission denied: ", err);
+                        alert("Microphone permission is required for speech recognition to work.");
+                    });
+                } else {
+                    console.error("getUserMedia not supported on your browser.");
+                    alert("Your browser does not support getUserMedia API. Please use a modern browser like Chrome or Firefox.");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+    <h1>Voice to Text</h1>
+    <button id="startButton">Start Speaking</button>
+    <p id="text">Start Speaking</p>
+</body>
+</html>
