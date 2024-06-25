@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live HTML Interpreter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        .header {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .editor, .output {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+        .editor {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .output {
+            height: 300px;
+        }
+        .home-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <button class="home-btn" onclick="goToHome()">Home</button>
+        <h1>Live HTML Interpreter</h1>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="editor" contenteditable="true" id="htmlInput">
+            <!-- Initial HTML content -->
+            <h2>Type your HTML code here:</h2>
+        </div>
+        <div class="output" id="htmlOutput"></div>
+    </div>
+
+    <script>
+        // Function to update output with user input HTML
+        function updateOutput() {
+            var htmlInput = document.getElementById('htmlInput').innerText;
+            var htmlOutput = document.getElementById('htmlOutput');
+            htmlOutput.innerHTML = htmlInput;
+        }
+
+        // Update output on input change
+        document.getElementById('htmlInput').addEventListener('input', updateOutput);
+
+        // Function to navigate to Home page
+        function goToHome() {
+            window.location.href = "index.html"; // Change index.html to your home page
+        }
+    </script>
+</body>
+</html>
+
