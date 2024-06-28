@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello Camera</title>
+    <script src="https://unpkg.com/dynamsoft-camera-enhancer@2.1.0/dist/dce.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #enhancerUIContainer {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #2980b9;
+        }
+
+        .image-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #4285f4;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div id="enhancerUIContainer"></div>
+        <div class="button-container">
+            <button id="capture">Capture</button>
+        </div>
+        <div class="image-container" id="imageContainer"></div>
+    </div>
+
+    <script>
+        let enhancer = null,
+            images = [];
+
+        (async () => {
+            enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+            document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
+            await enhancer.open(true);
+        })();
+
+        document.getElementById('capture').onclick = () => {
+            if (enhancer) {
+                let frame = enhancer.getFrame();
+                let image = document.createElement('img');
+                image.src = frame.canvas.toDataURL();
+                document.getElementById('imageContainer').appendChild(image);
+                images.push(image);
+            }
+        };
+
+        // shuffle the button
+        let buttons = document.querySelectorAll('.button');
+        for (let i = buttons.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [buttons[i], buttons[j]] = [buttons[j], buttons[i]];
+        }
+    </script>
+</body>
+
+</html>
