@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Camera Streaming</title>
+    <style>
+        #videoElement {
+            width: 640px;
+            height: 480px;
+            border: 1px solid black;
+        }
+        #controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #controls button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: auto;
+        }
+        #controls button:hover {
+            background-color: #3e8e41;
+        }
+        #recordings {
+            margin-top: 20px;
+        }
+        #recordings video {
+            width: 300px;
+            height: 225px;
+            margin: 10px;
+        }
+        .home-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: 100px;
+        }
+        .home-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Camera Streaming</h1>
+    <button class="home-btn" onclick="goToHome()">Home</button>
+    <video id="videoElement" autoplay></video>
+    <div id="controls">
+        <button id="startRecording">Start Recording</button>
+        <button id="stopRecording" disabled>Stop Recording</button>
+    </div>
+    <div id="recordings"></div>
+
+    <script>
+        // Function to redirect to index.html
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Get the video element
+        const video = document.getElementById('videoElement');
+        const startRecordingButton = document.getElementById('startRecording');
+        const stopRecordingButton = document.getElementById('stopRecording');
+        const recordingsContainer = document.getElementById('recordings');
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        // Get the media stream from the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                // Attach the media stream to the video element
+                video.srcObject = stream;
+
+                // Create a new MediaRecorder instance
+                mediaRecorder = new MediaRecorder(stream);
+
+                // Add event listener for dataavailable event
+                mediaRecorder.ondataavailable = event => {
+                    recordedChunks.push(event.data);
+                };
+
+                // Add event listener for stop event
+                mediaRecorder.onstop = () => {
+                    stopRecordingButton.disabled = true;
+                    startRecordingButton.disabled = false;
+
+                    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                    recordedChunks = [];
+
+                    const videoElement = document.createElement('video');
+                    videoElement.controls = true;
+                    videoElement.src = URL.createObjectURL(blob);
+                    recordingsContainer.appendChild(videoElement);
+                };
+
+                // Add event listener for startRecordingButton click event
+                startRecordingButton.addEventListener('click', () => {
+                    mediaRecorder.start();
+                    stopRecordingButton.disabled = false;
+                    startRecordingButton.disabled = true;
+                });
+
+                // Add event listener for stopRecordingButton click event
+                stopRecordingButton.addEventListener('click', () => {
+                    mediaRecorder.stop();
+                });
+            })
+            .catch(error => {
+                console.error('Error accessing camera:', error);
+            });
+    </script>
+</body>
+</html>
