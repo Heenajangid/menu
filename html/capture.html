@@ -1,40 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch EC2 Instance</title>
-</head>
-<body>
-    <h1>Launch EC2 Instance</h1>
-    <form action="/cgi-bin/launch_instance.py" method="post">
-        <label for="region">Region:</label>
-        <input type="text" id="region" name="region" required><br><br>
-
-        <label for="instance_type">Instance Type:</label>
-        <input type="text" id="instance_type" name="instance_type" required><br><br>
-
-        <label for="ami_id">AMI ID:</label>
-        <input type="text" id="ami_id" name="ami_id" required><br><br>
-
-        <label for="key_name">Key Pair Name:</label>
-        <input type="text" id="key_name" name="key_name" required><br><br>
-
-        <label for="access_key">AWS Access Key:</label>
-        <input type="text" id="access_key" name="access_key" required><br><br>
-
-        <label for="secret_key">AWS Secret Key:</label>
-        <input type="password" id="secret_key" name="secret_key" required><br><br>
-
-        <input type="submit" value="Launch Instance">
-    </form>
-</body>
-</html>
-
-[root@ip-172-31-43-61 html]# cat capture.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
     <title>Camera Capture</title>
     <style>
         body {
