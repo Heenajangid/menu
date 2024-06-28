@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platforms</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://cdn.pixabay.com/photo/2019/03/31/19/43/colorful-4093935_960_720.jpg');
+            background-size: cover;
+            margin: 0;
+            animation: background-animation 10s linear infinite;
+        }
+
+        @keyframes background-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .icon {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .icon:hover {
+            background-color: #fff;
+            color: #333;
+            transform: scale(1.1);
+        }
+
+        .facebook {
+            background-color: darkblue;
+        }
+
+        .instagram {
+            background-color: rgb(217, 17, 164);
+        }
+
+        .linkedin {
+            background-color: rgb(64, 88, 244);
+        }
+
+        .youtube {
+            background-color: red;
+        }
+
+        .twitter {
+            background-color: #000;
+        }
+
+        .google {
+            background-color: #fff;
+            background-image: linear-gradient(45deg, #0f9dad 20%, #e01616 20%, #b8109f 20%, #9f0810 20%, #100c86 20%);
+        }
+
+        .spotify {
+            background-color: #1db954;
+        }
+    </style>
+</head>
+<body>
+    <div class="social-icons">
+        <a href="#" class="icon facebook" onclick="redirectTo('facebook')">Facebook</a>
+        <a href="#" class="icon instagram" onclick="redirectTo('instagram')">Instagram</a>
+        <a href="#" class="icon linkedin" onclick="redirectTo('linkedin')">LinkedIn</a>
+        <a href="#" class="icon youtube" onclick="redirectTo('youtube')">YouTube</a>
+        <a href="#" class="icon twitter" onclick="redirectTo('twitter')">Twitter</a>
+        <a href="#" class="icon google" onclick="redirectTo('google')">Google</a>
+        <a href="#" class="icon spotify" onclick="redirectTo('spotify')">Spotify</a>
+    </div>
+
+    <script>
+        function redirectTo(platform) {
+            switch (platform) {
+                case 'facebook':
+                    window.location.href = 'https://www.facebook.com/';
+                    break;
+                case 'instagram':
+                    window.location.href = 'https://www.instagram.com/';
+                    break;
+                case 'linkedin':
+                    window.location.href = 'https://www.linkedin.com/';
+                    break;
+                case 'youtube':
+                    window.location.href = 'https://www.youtube.com/';
+                    break;
+                case 'twitter':
+                    window.location.href = 'https://www.twitter.com/';
+                    break;
+                case 'google':
+                    window.location.href = 'https://www.google.com/';
+                    break;
+                case 'spotify':
+                    window.location.href = 'https://www.spotify.com/';
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
