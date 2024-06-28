@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #013b14 10%, #013b14 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #000000;
+            border: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+            padding: 10px;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            background-color: #00008B;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #013b14;
+        }
+
+        #responseContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 2px solid #ffffff;
+            text-align: left;
+            font-size: 16px;
+            color: #ffffff;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        #homeButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #00008B;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            width: 100px;
+        }
+
+        #homeButton:hover {
+            background-color: #000064;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+        <h1>AI Text Generator</h1>
+        <textarea id="prompt" placeholder="Enter your prompt here..."></textarea>
+        <button id="generateButton">Generate</button>
+        <div id="responseContainer"></div>
+    </div>
+
+    <script>
+        document.getElementById('generateButton').addEventListener('click', function() {
+            var prompt = document.getElementById('prompt').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/cgi-bin/gemini_chat.py', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('responseContainer').innerText = xhr.responseText;
+                }
+            };
+
+            xhr.send('prompt=' + encodeURIComponent(prompt));
+        });
+    </script>
+</body>
+</html>
