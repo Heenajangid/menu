@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .draggable {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(7, 164, 25);
+            position: absolute;
+            cursor: move;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+        #draggableDiv1 {
+            top: 50px;
+            left: 50px;
+        }
+        #draggableDiv2 {
+            top: 200px;
+            left: 50px;
+            background-color: rgb(20, 7, 206);
+        }
+    </style>
+</head>
+<body>
+
+<div id="draggableDiv1" class="draggable">Heena</div>
+<div id="draggableDiv2" class="draggable">Jangid</div>
+
+<script>
+    // Make an element draggable
+    function makeDraggable(element) {
+        let offsetX, offsetY;
+
+        // Function to execute when mouse button is pressed
+        const onMouseDown = (e) => {
+            offsetX = e.clientX - element.offsetLeft;
+            offsetY = e.clientY - element.offsetTop;
+            document.addEventListener("mousemove", onMouseMove);
+            document.addEventListener("mouseup", onMouseUp);
+        };
+
+        // Function to execute when mouse is moved
+        const onMouseMove = (e) => {
+            e.preventDefault();
+            element.style.left = e.clientX - offsetX + "px";
+            element.style.top = e.clientY - offsetY + "px";
+        };
+
+        // Function to execute when mouse button is released
+        const onMouseUp = () => {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
+        };
+
+        // Attach the mousedown event listener to the element
+        element.addEventListener("mousedown", onMouseDown);
+    }
+
+    // Get the draggable elements
+    const draggableDiv1 = document.getElementById("draggableDiv1");
+    const draggableDiv2 = document.getElementById("draggableDiv2");
+
+    // Make the elements draggable
+    makeDraggable(draggableDiv1);
+    makeDraggable(draggableDiv2);
+</script>
+
+</body>
+</html>
