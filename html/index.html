@@ -5,36 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>menu page</title>
     <style>
+        body {
+            background: radial-gradient(black, darkblue, black);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+/* This line creates 3 columns */
+            grid-gap: 10px;
+        }
+
         .button {
-            background-color: blue;
-            color: white;
-            padding: 10px 20px;
+            background-color: lightgreen;
+            color: black;
+            padding: 20px 10px;
             border: none;
             border-radius: 5px;
             font-size: 1em;
             cursor: pointer;
-            margin-right: 10px;
             transition: background-color 0.3s ease;
         }
+
         .button:hover {
-            background-color: rgb(18, 117, 31);
-        }
-        .button2 {
-            background-color: green;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .button2:hover {
             background-color: darkgreen;
         }
-        .button-container {
-            display: flex;
-            justify-content: center;
+
+        h1 {
+            color: lightgray;
         }
     </style>
 </head>
@@ -44,22 +56,37 @@
     </center>
     <div class="button-container">
         <button class="button" onclick="window.location.href='geolocation.html'">Geolocation</button>
-        <br>
         <button class="button" onclick="window.location.href='search.html'">Search Top 5</button>
-        <br>
         <button class="button" onclick="window.location.href='liveinterpreter.html'">Live Html Interpreter</button>
-        <br>
         <button class="button" onclick="window.location.href='pythonsms.html'">Send Sms</button>
-        <br>
         <button class="button" onclick="window.location.href='bulk_email.html'">Bulk E-mail</button>
-        <br>
         <button class="button" onclick="window.location.href='speechtotext.html'">Speech to Text</button>
-        <button class="button" onclick="window.location.href='googlesearch.htmil'">Google Search</button>
         <button class="button" onclick="window.location.href='gnome.html'">Gnome</button>
         <button class="button" onclick="window.location.href='linux.html'">Linux Terminal</button>
         <button class="button" onclick="window.location.href='cam_live.html'">Camera Live</button>
+        <button class="button" onclick="window.location.href='capture.html'">Capture Image</button>
+        <button class="button" onclick="window.location.href='draganddrop.html'">Drag and Drop</button>
+        <button class="button" onclick="window.location.href='recording.html'">Live Recording</button>
+        <button class="button" onclick="window.location.href='chatbot.html'">AI Bot</button>
+        <button class="button" onclick="window.location.href='lwcmd.html'">Command Excutor</button>
+        <button class="button" onclick="window.location.href='portfolio.html'">My Portfolio</button>
+        <button class="button" onclick="window.location.href='puzzle.html'">My puzzle</button>
+        <button class="button" onclick="window.location.href='upload_image.html'">My Image</button>
+        <button class="button" onclick="window.location.href='js_camera.html'">My Camera</button>
+        <button class="button" onclick="window.location.href='send_whatsapp.html'">Send Whatsapp</button>
+        <button class="button" onclick="window.location.href='voicetovoice.html'">Voice Recorder</button>
+        <button class="button" onclick="window.location.href='texttospeech.html'">Text to Speech</button>
+        <button class="button" onclick="window.location.href='boto3.html'">EC2 Instance</button>
+        <button class="button" onclick="window.location.href='socialmedia.html'">Social Media</button>
+        <button class="button" onclick="window.location.href='ec2.html'">Launch EC2 Instance</button>
+        <button class="button" onclick="window.location.href='snake.html'">Snake Game</button>
+        <button class="button" onclick="window.location.href='wikipedia.html'">Wikipedia Reader</button>
+        <button class="button" onclick="window.location.href='googleclone.html'">Google Search</button>
+        <button class="button" onclick="window.location.href='password_form.html'">Password Generator</button>
+
 
     </div>
+
     <br>
 </body>
 </html>
