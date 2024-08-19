@@ -6,50 +6,73 @@
     <title>Open gnome-terminal</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for hacker look */
+            background-color: #000000; /* Solid black background */
+            color: #00ff00; /* Neon green text */
+            margin: 0;
+            padding: 0;
         }
+
         .container {
             width: 400px;
-            margin: 0 auto;
+            margin: 50px auto; /* Centering with margin for positioning */
             padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            background-color: #1a1a1a; /* Dark background for container */
+            border: 2px solid #00ff00; /* Neon green border */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Neon green shadow */
         }
+
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            color: #00ff00; /* Neon green text */
         }
+
         .home-btn {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #00ff00; /* Neon green background */
+            color: #000000; /* Black text */
             border: none;
+            border-radius: 5px;
             cursor: pointer;
             text-align: center;
             font-size: 18px;
             width: 100px;
+            transition: background-color 0.3s ease;
         }
+
         .home-btn:hover {
-            background-color: #3e8e41;
+            background-color: #00cc00; /* Slightly darker green for hover effect */
+        }
+
+        form input[type="submit"] {
+            background-color: #00ff00; /* Neon green background */
+            color: #000000; /* Black text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #00cc00; /* Slightly darker green for hover effect */
         }
     </style>
 </head>
 <body>
+    <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     <div class="container">
         <h1>Open gnome-terminal via CGI Script</h1>
-        <button class="home-btn" onclick="goToHome()">Home</button>
         <form action="/cgi-bin/gnome_terminal_open.py" method="get">
             <input type="submit" value="Open gnome-terminal">
         </form>
     </div>
-    <script>
-        function goToHome() {
-            window.location.href = "index.html";
-        }
-    </script>
 </body>
 </html>
