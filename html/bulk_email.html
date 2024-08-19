@@ -5,54 +5,82 @@
     <title>Send Bulk Email</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-        }
-        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            background: radial-gradient(circle, #000000, #003300, #000000);
+            color: #00ff00; /* Green text color */
             text-align: center;
+            margin: 0;
+            padding: 20px;
         }
+
+        h1 {
+            color: #00ff00; /* Green text color */
+            margin-bottom: 20px;
+        }
+
         label {
             display: block;
-            margin-top: 20px;
+            margin: 20px 0 10px;
+            font-size: 1.1em;
         }
+
         input[type="text"], textarea {
-            width: 300px;
-            padding: 10px;
-            margin-bottom: 10px;
+            width: 60%;
+            max-width: 500px;
+            padding: 12px;
+            border: 2px solid #00ff00; /* Green border */
+            background: linear-gradient(135deg, #003300, #004d00); /* Green-blue gradient background */
+            color: #00ff00; /* Green text color */
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        #homeButton {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            background: linear-gradient(135deg, #004d00, #003300); /* Darker gradient on focus */
+            border-color: #00cc00; /* Lighter green border on focus */
+            outline: none;
+        }
+
+        #homeButton, input[type="submit"] {
+            padding: 12px 24px;
+            background-color: #00ff00; /* Bright green background */
+            color: #003300; /* Dark green text color */
+            border: 2px solid #00ff00; /* Green border */
+            border-radius: 8px;
             cursor: pointer;
-            text-align: center;
-            font-size: 18px;
-            width: 100px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
-        #homeButton:hover {
-            background-color: #3e8e41;
+
+        #homeButton:hover, input[type="submit"]:hover {
+            background-color: #003300; /* Dark green background */
+            color: #00ff00; /* Bright green text color */
+            transform: scale(1.1); /* Slightly enlarge button on hover */
         }
     </style>
 </head>
 <body>
-    <center>
-        <h1>Send Bulk Email</h1>
-        <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
-        <form action="/cgi-bin/send_bulk_email.py" method="post">
-            <label for="subject">Subject:</label><br>
-            <input type="text" id="subject" name="subject" required><br><br>
+    <h1>Send Bulk Email</h1>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+    <form action="/cgi-bin/send_bulk_email.py" method="post">
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject" required><br>
 
-            <label for="body">Body:</label><br>
-            <textarea id="body" name="body" required></textarea><br><br>
+        <label for="body">Body:</label>
+        <textarea id="body" name="body" required></textarea><br>
 
-            <label for="recipients">Recipients (comma-separated):</label><br>
-            <input type="text" id="recipients" name="recipients" required><br><br>
+        <label for="recipients">Recipients (comma-separated):</label><br>
+        <input type="text" id="recipients" name="recipients" required><br>
 
-            <input type="submit" value="Send Emails">
-        </form>
-    </center>
+        <input type="submit" value="Send Emails">
+    </form>
 </body>
 </html>
