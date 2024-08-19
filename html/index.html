@@ -6,47 +6,60 @@
     <title>menu page</title>
     <style>
         body {
-            background: radial-gradient(black, darkblue, black);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            background: radial-gradient(circle, #000000, #003300, #000000);
+            background-size: 200% 200%;
+            animation: gradient 20s linear infinite;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00; /* Green text color for hacker theme */
         }
 
         @keyframes gradient {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
             50% {
-                background-position: 100% 50%;
+                background-position: 100% 100%;
             }
             100% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
         }
 
         .button-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-/* This line creates 3 columns */
-            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-gap: 15px;
+            padding: 20px;
         }
 
         .button {
-            background-color: lightgreen;
-            color: black;
-            padding: 20px 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
+            background-color: #003300; /* Dark green background */
+            color: #00ff00; /* Green text color */
+            padding: 15px;
+            border: 2px solid #00ff00; /* Green border */
+            border-radius: 8px;
+            font-size: 0.9em;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .button:hover {
-            background-color: darkgreen;
+            background-color: #00ff00; /* Bright green background on hover */
+            color: #003300; /* Dark green text color on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
 
         h1 {
-            color: lightgray;
+            text-align: center;
+            color: #00ff00; /* Green text color */
+            font-size: 2em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        center {
+            display: block;
         }
     </style>
 </head>
@@ -83,10 +96,6 @@
         <button class="button" onclick="window.location.href='wikipedia.html'">Wikipedia Reader</button>
         <button class="button" onclick="window.location.href='googleclone.html'">Google Search</button>
         <button class="button" onclick="window.location.href='password_form.html'">Password Generator</button>
-
-
     </div>
-
-    <br>
 </body>
 </html>
