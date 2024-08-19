@@ -6,8 +6,9 @@
     <title>AI Text Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #013b14 10%, #013b14 100%);
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000; /* Solid black background */
+            color: #00ff00; /* Neon green text color */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,72 +17,83 @@
         }
 
         .container {
-            background: #000000;
-            border: #ffffff;
+            background-color: #002b36; /* Dark blue background for the container */
+            border: 2px solid #00ff00; /* Neon green border */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 50%;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Neon green shadow */
+            width: 90%;
             max-width: 600px;
             text-align: center;
         }
 
         h1 {
             margin-bottom: 20px;
-            color: #ffffff;
+            color: #00ff00; /* Neon green */
+            font-size: 2em;
         }
 
         textarea {
             width: 90%;
             height: 100px;
             padding: 10px;
-            border: 2px solid #ffffff;
+            border: 2px solid #00ff00; /* Neon green border */
             border-radius: 5px;
             margin-bottom: 20px;
             font-size: 16px;
+            color: #00ff00; /* Neon green text color */
+            background-color: #000000; /* Solid black background */
             resize: none;
         }
 
         button {
-            background-color: #00008B;
-            color: #ffffff;
-            border: none;
+            background-color: #004d00; /* Dark green background */
+            color: #00ff00; /* Neon green text color */
+            border: 2px solid #00ff00; /* Neon green border */
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
 
         button:hover {
-            background-color: #013b14;
+            background-color: #00ff00; /* Neon green background on hover */
+            color: #003300; /* Dark green text color on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
 
         #responseContainer {
             margin-top: 20px;
             padding: 10px;
-            border-top: 2px solid #ffffff;
+            border-top: 2px solid #00ff00; /* Neon green border */
             text-align: left;
             font-size: 16px;
-            color: #ffffff;
+            color: #00ff00; /* Neon green text color */
             max-height: 300px;
             overflow-y: auto;
+            background-color: #000000; /* Solid black background */
         }
 
         #homeButton {
-            display: block;
-            margin: 20px auto;
+            background-color: #004d00; /* Dark green background */
+            color: #00ff00; /* Neon green text color */
+            border: 2px solid #00ff00; /* Neon green border */
             padding: 10px 20px;
-            background-color: #00008B;
-            color: #ffffff;
-            border: none;
+            border-radius: 5px;
             cursor: pointer;
             text-align: center;
             font-size: 18px;
-            width: 100px;
+            width: 120px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            margin: 20px auto; /* Centering the button */
+            display: block;
         }
 
         #homeButton:hover {
-            background-color: #000064;
+            background-color: #00ff00; /* Neon green background on hover */
+            color: #003300; /* Dark green text color on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
     </style>
 </head>
