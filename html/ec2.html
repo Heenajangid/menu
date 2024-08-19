@@ -12,9 +12,10 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack elements vertically */
             align-items: center;
             height: 100vh;
+            justify-content: center;
         }
 
         h1 {
@@ -67,9 +68,26 @@
         input[type="submit"]:hover {
             background-color: #00cc00; /* Slightly darker green for hover effect */
         }
+
+        #homeButton {
+            background-color: #00ff00; /* Neon green background */
+            color: #000000; /* Black text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #homeButton:hover {
+            background-color: #00cc00; /* Slightly darker green for hover effect */
+        }
     </style>
 </head>
 <body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
     <div>
         <h1>Launch EC2 Instance</h1>
         <form action="/cgi-bin/launch_instance.py" method="post">
