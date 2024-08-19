@@ -6,9 +6,9 @@
     <title>Search Google</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Courier New', monospace;
+            background-color: #0d1117;
+            color: #c9d1d9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,13 +20,23 @@
             text-align: center;
         }
 
+        .search-form h1 {
+            color: #58a6ff; /* Neon blue */
+        }
+
         .search-form input[type="text"] {
             padding: 10px;
             font-size: 16px;
             width: 300px;
             margin-right: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #58a6ff; /* Neon blue */
             border-radius: 5px;
+            background-color: #161b22; /* Dark background */
+            color: #c9d1d9; /* Light text */
+        }
+
+        .search-form input[type="text"]::placeholder {
+            color: #8b949e; /* Light grey */
         }
 
         .search-form input[type="submit"] {
@@ -34,13 +44,29 @@
             font-size: 16px;
             border: none;
             border-radius: 5px;
-            background-color: #4a90e2;
-            color: #fff;
+            background-color: #00ff00; /* Neon green */
+            color: #0d1117; /* Dark background for text */
             cursor: pointer;
         }
 
         .search-form input[type="submit"]:hover {
-            background-color: #357ab8;
+            background-color: #00cc00; /* Darker green */
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #58a6ff; /* Neon blue */
+            color: #0d1117; /* Dark background for text */
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            background-color: #357ab8; /* Darker blue */
         }
     </style>
 </head>
@@ -48,10 +74,16 @@
     <button class="home-btn" onclick="goToHome()">Home</button>
     <div class="search-form">
         <h1>Google Search</h1>
-        <form method="get" action="/cgi-bin/yes.py">
+        <form method="get" action="/cgi-bin/search.py">
             <input type="text" name="query" placeholder="Search Google...">
             <input type="submit" value="Search">
         </form>
     </div>
+
+    <script>
+        function goToHome() {
+            window.location.href = '/';
+        }
+    </script>
 </body>
 </html>
