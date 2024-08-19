@@ -4,29 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Launch EC2 Instance</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for hacker feel */
+            background-color: #000000; /* Black background */
+            color: #00ff00; /* Neon green text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00ff00; /* Neon green text */
+        }
+
+        form {
+            background: #1a1a1a; /* Dark background for form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Neon green shadow */
+            width: 300px;
+            max-width: 100%; /* Ensure responsiveness on smaller screens */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 16px;
+            color: #00ff00; /* Neon green text */
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 22px); /* Adjust width to accommodate padding and border */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #00ff00; /* Neon green border */
+            border-radius: 5px;
+            background: #000; /* Black background for inputs */
+            color: #00ff00; /* Neon green text */
+            font-size: 14px;
+            box-sizing: border-box; /* Ensure padding and border are included in width */
+        }
+
+        input[type="submit"] {
+            background-color: #00ff00; /* Neon green background */
+            color: #000000; /* Black text */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00cc00; /* Slightly darker green for hover effect */
+        }
+    </style>
 </head>
 <body>
-    <h1>Launch EC2 Instance</h1>
-    <form action="/cgi-bin/launch_instance.py" method="post">
-        <label for="region">Region:</label>
-        <input type="text" id="region" name="region" required><br><br>
+    <div>
+        <h1>Launch EC2 Instance</h1>
+        <form action="/cgi-bin/launch_instance.py" method="post">
+            <label for="region">Region:</label>
+            <input type="text" id="region" name="region" required><br>
 
-        <label for="instance_type">Instance Type:</label>
-        <input type="text" id="instance_type" name="instance_type" required><br><br>
+            <label for="instance_type">Instance Type:</label>
+            <input type="text" id="instance_type" name="instance_type" required><br>
 
-        <label for="ami_id">AMI ID:</label>
-        <input type="text" id="ami_id" name="ami_id" required><br><br>
+            <label for="ami_id">AMI ID:</label>
+            <input type="text" id="ami_id" name="ami_id" required><br>
 
-        <label for="key_name">Key Pair Name:</label>
-        <input type="text" id="key_name" name="key_name" required><br><br>
+            <label for="key_name">Key Pair Name:</label>
+            <input type="text" id="key_name" name="key_name" required><br>
 
-        <label for="access_key">AWS Access Key:</label>
-        <input type="text" id="access_key" name="access_key" required><br><br>
+            <label for="access_key">AWS Access Key:</label>
+            <input type="text" id="access_key" name="access_key" required><br>
 
-        <label for="secret_key">AWS Secret Key:</label>
-        <input type="password" id="secret_key" name="secret_key" required><br><br>
+            <label for="secret_key">AWS Secret Key:</label>
+            <input type="password" id="secret_key" name="secret_key" required><br>
 
-        <input type="submit" value="Launch Instance">
-    </form>
+            <input type="submit" value="Launch Instance">
+        </form>
+    </div>
 </body>
 </html>
