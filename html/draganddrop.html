@@ -1,31 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Elements</title>
     <style>
+        body {
+            background-color: #000000; /* Solid black background */
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for hacker look */
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #00ff00; /* Neon green background */
+            color: #000000; /* Black text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            z-index: 1000; /* Ensure it's on top of other elements */
+        }
+
+        .home-button:hover {
+            background-color: #00cc00; /* Slightly darker green for hover effect */
+        }
+
         .draggable {
-            width: 150px;
-            height: 100px;
-            background-color: rgb(7, 164, 25);
+            width: 200px;
+            height: 150px;
+            background-color: #003300; /* Dark green background */
+            color: #00ff00; /* Neon green text */
             position: absolute;
-            cursor: move;
-            border: 1px solid #000;
+            cursor: grab; /* Change cursor to grab icon */
+            border: 2px solid #00ff00; /* Neon green border */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
+            font-size: 20px;
+            border-radius: 8px; /* Rounded corners for a techy feel */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Neon green shadow */
         }
+
         #draggableDiv1 {
             top: 50px;
             left: 50px;
+            background-color: #002b36; /* Dark blue background */
         }
+
         #draggableDiv2 {
-            top: 200px;
+            top: 250px;
             left: 50px;
-            background-color: rgb(20, 7, 206);
+            background-color: #004d00; /* Darker green background */
+        }
+
+        /* Change cursor to grabbing when dragging */
+        .draggable:active {
+            cursor: grabbing;
         }
     </style>
 </head>
 <body>
+
+<button class="home-button" onclick="window.location.href='index.html'">Home</button>
 
 <div id="draggableDiv1" class="draggable">Heena</div>
 <div id="draggableDiv2" class="draggable">Jangid</div>
