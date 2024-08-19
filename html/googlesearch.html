@@ -3,86 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Google</title>
+    <title>Google Search</title>
+    <link rel="icon" href="data:,">
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e;
+            color: #c7c7c7;
+            margin: 0;
+            padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
+        }
+        h2 {
+            color: #00ff00;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        #searchQuery {
+            width: 80%;
+            max-width: 500px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 24px;
+            font-size: 18px;
+            background-color: #333;
+            color: #00ff00;
+            box-shadow: 0 2px 6px rgba(0, 255, 0, 0.1);
+        }
+        #searchBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00ff00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #searchBtn:hover {
+            background-color: #00cc00;
+        }
+        #results {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            background-color: #222;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+            padding: 20px;
+        }
+        #results div {
+            margin-bottom: 20px;
+        }
+        #results h3 {
             margin: 0;
+            font-size: 18px;
+            color: #00ff00;
         }
-
-        .search-form {
-            text-align: center;
+        #results p {
+            margin: 5px 0;
+            color: #ccc;
         }
-
-        .search-form h1 {
-            color: #58a6ff; /* Neon blue */
+        #results a {
+            color: #00ff00;
+            text-decoration: none;
         }
-
-        .search-form input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            width: 300px;
-            margin-right: 10px;
-            border: 1px solid #58a6ff; /* Neon blue */
-            border-radius: 5px;
-            background-color: #161b22; /* Dark background */
-            color: #c9d1d9; /* Light text */
-        }
-
-        .search-form input[type="text"]::placeholder {
-            color: #8b949e; /* Light grey */
-        }
-
-        .search-form input[type="submit"] {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #00ff00; /* Neon green */
-            color: #0d1117; /* Dark background for text */
-            cursor: pointer;
-        }
-
-        .search-form input[type="submit"]:hover {
-            background-color: #00cc00; /* Darker green */
-        }
-
-        .home-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #58a6ff; /* Neon blue */
-            color: #0d1117; /* Dark background for text */
-            cursor: pointer;
-        }
-
-        .home-btn:hover {
-            background-color: #357ab8; /* Darker blue */
+        #results a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <button class="home-btn" onclick="goToHome()">Home</button>
-    <div class="search-form">
-        <h1>Google Search</h1>
-        <form method="get" action="/cgi-bin/search.py">
-            <input type="text" name="query" placeholder="Search Google...">
-            <input type="submit" value="Search">
-        </form>
-    </div>
+    <h2>Google Search</h2>
+    <input type="text" id="searchQuery" placeholder="Enter your search query">
+    <button id="searchBtn">Search</button>
+    <div id="results"></div>
 
     <script>
-        function goToHome() {
-            window.location.href = '/';
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            var query = document.getElementById("searchQuery").value.trim();
+            if (query !== "") {
+                fetch('/cgi-bin/google_search.py?query=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Search results:", data);
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                });
+            }
+        });
+
+        function displayResults(results) {
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+            if (results) {
+                results.forEach(function(result, index) {
+                    var resultDiv = document.createElement("div");
+                    resultDiv.innerHTML = `
+                        <h3>Result ${index + 1}:</h3>
+                        <p>Title: ${result.title}</p>
+                        <p>Link: <a href="${result.link}" target="_blank">${result.link}</a></p>
+                        <p>Snippet: ${result.snippet}</p>
+                    `;
+                    resultsDiv.appendChild(resultDiv);
+                });
+            } else {
+                resultsDiv.textContent = "Failed to retrieve search results.";
+            }
         }
     </script>
 </body>
