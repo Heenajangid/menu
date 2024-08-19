@@ -6,65 +6,154 @@
     <title>Live HTML Interpreter</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e;
+            color: #c7c7c7;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow to keep animation clean */
         }
+
+        /* Header styles */
         .header {
-            background-color: #4CAF50;
-            padding: 10px;
-            color: white;
+            background-color: #00ff00;
+            color: #1e1e1e;
+            padding: 10px 0;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
         }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* Home button styles */
+        .home-btn {
+            background-color: transparent;
+            border: none;
+            color: #00ff00;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            padding: 10px 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.5);
+        }
+
+        .home-btn:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+
+        /* Container styles */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            height: calc(100vh - 40px); /* Adjust for header height */
+            position: relative;
+            overflow: hidden;
         }
-        .editor, .output {
-            width: 80%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: none;
+
+        .editor-container {
+            flex: 1;
+            display: flex;
         }
+
         .editor {
-            height: 300px;
-            margin-bottom: 20px;
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #00ff00;
+            box-sizing: border-box;
+            overflow-y: auto;
+            background-color: #333;
+            color: #00ff00;
         }
+
         .output {
-            height: 300px;
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            background-color: #222;
+            color: #00ff00;
         }
-        .home-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+
+        /* Waves animation */
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
         }
-        .home-btn:hover {
-            background-color: #3e8e41;
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: rgba(0, 255, 0, 0.5);
+            animation: waveAnimation 10s linear infinite;
+            opacity: 0.5;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
-        <button class="home-btn" onclick="goToHome()">Home</button>
         <h1>Live HTML Interpreter</h1>
+        <button class="home-btn" onclick="goToHome()">Home</button>
+    </div>
+
+    <!-- Waves animation -->
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
     </div>
 
     <!-- Main content -->
     <div class="container">
-        <div class="editor" contenteditable="true" id="htmlInput">
-            <!-- Initial HTML content -->
-            <h2>Type your HTML code here:</h2>
+        <div class="editor-container">
+            <div class="editor" contenteditable="true" id="htmlInput">
+                <!-- Initial HTML content -->
+                <!-- <h2>Type your HTML code here:</h2>
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html lang="en"&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&lt;meta charset="UTF-8"&gt;</p>
+                <p>&lt;title&gt;Live HTML Interpreter&lt;/title&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&lt;h1&gt;Hello, World!&lt;/h1&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p> -->
+            </div>
+            <div class="output" id="htmlOutput"></div>
         </div>
-        <div class="output" id="htmlOutput"></div>
     </div>
 
     <script>
@@ -85,4 +174,3 @@
     </script>
 </body>
 </html>
-
