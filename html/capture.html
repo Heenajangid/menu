@@ -4,25 +4,44 @@
     <title>Camera Capture</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #003300, #004d00, #003366); /* Green-blue gradient background */
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00; /* Green text color */
             text-align: center;
+            margin: 0;
+            padding: 20px;
         }
+
         h1 {
+            color: #00ff00; /* Green text color */
             margin-top: 20px;
+            font-size: 2em;
         }
+
+        video, canvas {
+            border: 2px solid #00ff00; /* Bright green border */
+            border-radius: 10px;
+            background: #000; /* Black background for video and canvas */
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5); /* Greenish shadow */
+        }
+
         button {
             margin: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #004d00, #00ff00); /* Green gradient background */
+            color: #003300; /* Dark green text color */
+            border: 2px solid #00ff00; /* Green border */
             cursor: pointer;
             text-align: center;
             font-size: 18px;
-            width: auto;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
+
         button:hover {
-            background-color: #3e8e41;
+            background: linear-gradient(135deg, #003300, #004d00); /* Darker green gradient on hover */
+            color: #00ff00; /* Bright green text color on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
     </style>
 </head>
@@ -51,6 +70,7 @@
             .catch(error => {
                 console.error('Error accessing camera:', error);
             });
+
         captureButton.addEventListener('click', () => {
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             const imageDataURL = canvas.toDataURL('image/png');
