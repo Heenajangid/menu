@@ -6,65 +6,122 @@
     <title>Microphone Input Demo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #f1f1f1;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000; /* Dark background */
+            color: #00ff00; /* Neon green text color */
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #003300; /* Dark green */
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .home-button {
+            background-color: #00ff00; /* Neon green */
+            color: #000; /* Black text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Green glowing effect */
+        }
+
+        .home-button:hover {
+            background-color: #00cc00; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly enlarges the button on hover */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background-color: #001a00; /* Very dark green */
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.5); /* Green glowing effect */
+            border-radius: 15px;
+            margin-top: 80px; /* Adjust based on header height */
         }
 
         h1 {
+            font-size: 2em;
             margin-bottom: 20px;
-            color: #333;
+            color: #00ff00; /* Neon green */
+            text-shadow: 0 0 10px #00ff00; /* Glowing effect */
         }
 
         button {
             margin: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 12px 24px;
+            background-color: #00ff00; /* Neon green */
+            color: #000; /* Black text color */
             border: none;
             cursor: pointer;
             text-align: center;
             font-size: 18px;
-            width: auto;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Green glowing effect */
         }
 
         button:hover {
-            background-color: #3e8e41;
+            background-color: #00cc00; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly enlarges the button on hover */
         }
 
         #status {
             margin-bottom: 20px;
-            color: #333;
+        }
+
+        audio {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #00ff00; /* Neon green border */
+            border-radius: 5px;
         }
 
         #homeButton {
+            background-color: #00ff00; /* Neon green */
             margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Green glowing effect */
+        }
+
+        #homeButton:hover {
+            background-color: #00cc00; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly enlarges the button on hover */
         }
     </style>
 </head>
 <body>
-    <h1>Voice Recorder</h1>
-    <button id="start">Start Recording</button>
-    <button id="stop">Stop Recording</button>
-    <p id="status">Status: Idle</p>
-    <audio id="audio" controls></audio>
-    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+    <header>
+        <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+    </header>
+    <div class="container">
+        <h1>Voice Recorder</h1>
+        <button id="start">Start Recording</button>
+        <button id="stop">Stop Recording</button>
+        <p id="status">Status: Idle</p>
+        <audio id="audio" controls></audio>
+    </div>
 
     <script>
         document.getElementById('start').onclick = async function() {
