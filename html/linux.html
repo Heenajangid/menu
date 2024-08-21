@@ -4,9 +4,9 @@
     <title>Linux Terminal</title>
     <style>
         body {
-            background-color: #0517a1;
-            color: #fff;
-            font-family: monospace;
+            background-color: #000000; /* Dark background for hacker theme */
+            color: #00ff00; /* Green text color for hacker theme */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for terminal look */
             margin: 0;
             padding: 0;
         }
@@ -14,37 +14,37 @@
         .terminal {
             width: 80%;
             margin: 50px auto;
-            border: 1px solid #ccc;
+            border: 1px solid #00ff00; /* Green border for the terminal */
             border-radius: 5px;
             overflow: hidden;
-            background-color: #0517a1;
+            background-color: #000000; /* Dark background for the terminal */
         }
 
         .terminal input {
             width: 100%;
             border: none;
-            background-color: #0517a1;
-            color: #fff;
-            font-family: monospace;
+            background-color: #000000; /* Dark background for the input */
+            color: #00ff00; /* Green text color for the input */
+            font-family: 'Courier New', Courier, monospace;
             padding: 10px;
             box-sizing: border-box;
             outline: none;
         }
 
         .terminal .prompt {
-            color: rgb(59, 211, 12);
+            color: #00ff00; /* Green color for the prompt */
         }
 
         .terminal .command {
-            color: #fff;
+            color: #00ff00; /* Green color for the command text */
         }
 
         #output {
             width: 100%;
             padding: 10px;
-            background-color: #0517a1;
-            color: #fff;
-            font-family: monospace;
+            background-color: #000000; /* Dark background for the output */
+            color: #00ff00; /* Green text color for the output */
+            font-family: 'Courier New', Courier, monospace;
             overflow-y: auto;
             height: 300px;
             box-sizing: border-box;
@@ -53,8 +53,8 @@
 
         .home-btn {
             background-color: transparent;
-            border: none;
-            color: #fff;
+            border: 1px solid #00ff00; /* Green border for the home button */
+            color: #00ff00; /* Green text color for the home button */
             font-size: 16px;
             cursor: pointer;
             outline: none;
@@ -62,12 +62,13 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
             border-radius: 5px;
         }
 
         .home-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 255, 0, 0.1); /* Light green background on hover */
+            border-color: #00ff00; /* Green border on hover */
         }
     </style>
 </head>
