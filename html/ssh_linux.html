@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Command Executor</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Terminal-like font */
+            background-color: #000; /* Black background */
+            color: #00ff00; /* Neon green text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: auto; /* Allows scrolling if needed */
+        }
+
+        .container {
+            background: #1e1e1e; /* Dark grey background for container */
+            padding: 1.5rem; /* Added padding for better layout */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Neon green glow */
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px; /* Increased max-width for better layout */
+            text-align: left;
+            margin: 1rem; /* Margin for spacing from edges */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            animation: fadeIn 1s ease-in-out;
+            overflow-y: auto; /* Enables vertical scrolling within the container */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #00ff00; /* Neon green */
+            margin-bottom: 1rem;
+            font-size: 1.5rem; /* Slightly larger font size */
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ff00; /* Neon green */
+            font-size: 0.9rem;
+        }
+
+        input[type="text"], input[type="password"], textarea {
+            width: calc(100% - 2rem); /* Reduced width to include padding */
+            padding: 0.75rem; /* Increased padding for better usability */
+            margin-bottom: 1rem; /* Increased margin for spacing */
+            border: 1px solid #00ff00; /* Neon green border */
+            border-radius: 4px; /* Smaller border radius */
+            background-color: #333; /* Dark grey background for inputs */
+            color: #00ff00; /* Neon green text */
+            font-size: 0.9rem; /* Font size adjusted */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            background: #00ff00; /* Neon green */
+            color: #000; /* Black text */
+            border: none;
+            padding: 0.75rem 1.25rem; /* Adjusted padding for buttons */
+            border-radius: 4px; /* Smaller border radius */
+            cursor: pointer;
+            font-size: 0.9rem; /* Font size adjusted */
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #00cc00; /* Slightly darker green */
+            transform: scale(1.05);
+        }
+
+        #result {
+            margin-top: 1rem;
+            color: #00ff00; /* Neon green text for result */
+            font-size: 0.85rem; /* Slightly smaller font size */
+            white-space: pre-wrap;
+            background: #222; /* Dark background for result */
+            padding: 0.75rem; /* Padding for result */
+            border-radius: 4px; /* Smaller border radius */
+            border: 1px solid #00ff00; /* Neon green border */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Execute SSH Commands</h1>
+        <form id="sshForm" method="post" action="/cgi-bin/linux_ssh.py">
+            <label for="hostname">Hostname or IP:</label>
+            <input type="text" id="hostname" name="hostname" required>
+
+            <label for="port">Port:</label>
+            <input type="text" id="port" name="port" value="22" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="command">Command to Execute:</label>
+            <textarea id="command" name="command" rows="4" required></textarea>
+
+            <button type="submit" class="btn">Execute Command</button>
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
