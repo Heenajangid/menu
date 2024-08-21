@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
-            background-color: #1e1e1e;
-            color: #c7c7c7;
+            background-color: #0d0d0d; /* Dark background for hacker theme */
+            color: #00ff00; /* Neon green text color */
             margin: 0;
             padding: 0;
             overflow: hidden; /* Hide overflow to keep animation clean */
@@ -17,41 +17,41 @@
         /* Header styles */
         .header {
             background-color: #00ff00;
-            color: #1e1e1e;
-            padding: 10px 0;
+            color: #0d0d0d;
+            padding: 10px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.7);
             position: relative;
             z-index: 1;
-            overflow: hidden;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 28px;
             letter-spacing: 2px;
-            text-shadow: 0 0 5px #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
 
         /* Home button styles */
         .home-btn {
             background-color: transparent;
-            border: none;
+            border: 2px solid #00ff00;
             color: #00ff00;
             font-size: 16px;
             cursor: pointer;
             outline: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             position: absolute;
             top: 10px;
             left: 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.7);
         }
 
         .home-btn:hover {
-            background-color: rgba(0, 255, 0, 0.1);
+            background-color: #00ff00;
+            color: #0d0d0d;
         }
 
         /* Container styles */
@@ -64,18 +64,23 @@
         }
 
         .editor-container {
-            flex: 1;
             display: flex;
+            flex: 1;
+            background-color: #1e1e1e;
         }
 
         .editor {
             flex: 1;
             padding: 20px;
-            border-right: 1px solid #00ff00;
+            border-right: 2px solid #00ff00;
             box-sizing: border-box;
             overflow-y: auto;
-            background-color: #333;
+            background-color: #0d0d0d;
             color: #00ff00;
+            border-radius: 5px;
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre; /* Preserve formatting */
         }
 
         .output {
@@ -83,8 +88,12 @@
             padding: 20px;
             box-sizing: border-box;
             overflow-y: auto;
-            background-color: #222;
+            background-color: #0d0d0d;
             color: #00ff00;
+            border-radius: 5px;
+            border: 2px solid #00ff00;
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         /* Waves animation */
@@ -104,9 +113,9 @@
             left: 0;
             width: 200%;
             height: 100px;
-            background: rgba(0, 255, 0, 0.5);
+            background: rgba(0, 255, 0, 0.3);
             animation: waveAnimation 10s linear infinite;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .wave:nth-child(2) {
@@ -140,17 +149,6 @@
         <div class="editor-container">
             <div class="editor" contenteditable="true" id="htmlInput">
                 <!-- Initial HTML content -->
-                <!-- <h2>Type your HTML code here:</h2>
-                <p>&lt;!DOCTYPE html&gt;</p>
-                <p>&lt;html lang="en"&gt;</p>
-                <p>&lt;head&gt;</p>
-                <p>&lt;meta charset="UTF-8"&gt;</p>
-                <p>&lt;title&gt;Live HTML Interpreter&lt;/title&gt;</p>
-                <p>&lt;/head&gt;</p>
-                <p>&lt;body&gt;</p>
-                <p>&lt;h1&gt;Hello, World!&lt;/h1&gt;</p>
-                <p>&lt;/body&gt;</p>
-                <p>&lt;/html&gt;</p> -->
             </div>
             <div class="output" id="htmlOutput"></div>
         </div>
