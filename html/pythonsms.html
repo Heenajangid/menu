@@ -1,35 +1,91 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
     <title>Send SMS</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: #000; /* Dark background */
+            color: #0f0; /* Neon green text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
 
+        h1 {
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0; /* Glowing effect */
+            margin-bottom: 20px;
+            font-size: 2.5em; /* Larger heading */
+        }
+
+        form {
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            width: 100%;
+            max-width: 400px; /* Set a maximum width */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        label {
+            font-weight: bold;
+            color: #0f0;
+            display: block;
+            margin-bottom: 10px; /* Space between label and input/textarea */
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px; /* Space between input fields */
+            border: 2px solid #0f0;
+            border-radius: 4px;
+            background: #222; /* Dark input background */
+            color: #0f0;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        textarea {
+            height: 100px; /* Fixed height for textarea */
+            resize: vertical; /* Allow vertical resize only */
+        }
+
+        input[type="submit"] {
+            background-color: #0f0;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            transition: background-color 0.3s ease;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0a0;
+        }
+    </style>
 </head>
-
 <body>
-
     <h1>Send SMS</h1>
-
     <form action="/cgi-bin/send_sms.py" method="post">
-
         <label for="sender_number">Sender's Mobile Number (in E.164 format, e.g., +1234567890):</label>
-
         <input type="text" id="sender_number" name="sender_number" required>
 
-        <br>
-
         <label for="message_body">Message:</label>
-
         <textarea id="message_body" name="message_body" required></textarea>
 
-        <br>
-
         <input type="submit" value="Send SMS">
-
     </form>
-
 </body>
-
 </html>
