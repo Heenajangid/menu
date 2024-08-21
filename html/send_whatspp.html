@@ -7,29 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
-            background: #007bff;
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
-            color: #426b95;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            background: #000; /* Black background */
+            color: #00ff00; /* Neon green text */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for hacker feel */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
         .container {
-            background-color: #426b95;
+            background-color: #111; /* Dark grey background */
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Neon green glow effect */
             margin-top: 50px;
             animation: slidein 1s ease-in-out;
         }
@@ -47,36 +39,50 @@
 
         h1 {
             text-align: center;
-            color: #426b95;
+            color: #00ff00; /* Neon green */
+            margin-bottom: 20px;
         }
 
         .form-group label {
-            color: #ffffff;
+            color: #00ff00; /* Neon green */
         }
 
         .form-group input, .form-group textarea {
             border-radius: 5px;
-            border-color: #426b95;
+            border: 1px solid #00ff00; /* Neon green border */
+            background-color: #222; /* Dark background for input fields */
+            color: #00ff00; /* Neon green text */
         }
 
         .form-group .alert {
             margin-top: 10px;
         }
 
+        .btn-primary {
+            background-color: #00ff00; /* Neon green */
+            border: none;
+            color: #000; /* Black text */
+        }
+
+        .btn-primary:hover {
+            background-color: #00cc00; /* Slightly darker green on hover */
+        }
+
         .home-btn {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            background-color: #00ff00; /* Neon green */
+            color: #000; /* Black text */
             border: none;
             cursor: pointer;
             text-align: center;
             font-size: 18px;
+            border-radius: 5px;
         }
 
         .home-btn:hover {
-            background-color: #0056b3;
+            background-color: #00cc00; /* Slightly darker green on hover */
         }
     </style>
 </head>
@@ -98,6 +104,7 @@
         <div id="response" class="mt-3"></div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#whatsappForm').on('submit', function(e) {
