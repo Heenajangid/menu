@@ -1,64 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia Viewer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #191919;
+            background: linear-gradient(to right, #000000, #003300);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
             margin: 0;
-            animation: fadeIn 1s ease-in-out forwards;
+            overflow: hidden;
+            color: #00ff00; /* Neon green text color */
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
             }
-            to {
-                opacity: 1;
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
             }
         }
 
         .top-bar {
+            width: 100%;
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+            justify-content: center;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            border-bottom: 1px solid #00ff00; /* Neon green border */
         }
 
         .home-button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #00ff00; /* Neon green */
+            color: #000000; /* Black text */
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
-            text-align: center;
-            font-size: 18px;
-            width: auto;
-            margin-left: 10px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Neon green glowing effect */
         }
 
         .home-button:hover {
-            background-color: #3e8e41;
-            text-align: top;
+            background-color: #00cc00; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly enlarges the button on hover */
         }
 
         .container {
+            background: rgba(0, 0, 0, 0.8); /* Dark background */
+            backdrop-filter: blur(5px); /* Slight blur for the container */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.3); /* Neon green glowing effect */
             text-align: center;
-            background-color: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin-top: 20px;
             max-width: 800px;
+            width: 90%;
+            margin-top: 70px; /* Space for the top bar */
             animation: slideIn 0.5s ease-in-out forwards;
         }
 
@@ -67,60 +84,89 @@
                 transform: translateY(-20px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
 
+        h1 {
+            font-size: 2.5em;
+            color: #00ff00; /* Neon green */
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00; /* Glowing effect */
+        }
+
         #searchInput {
             width: 80%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #666;
-            border-radius: 5px;
-            background-color: #444;
-            color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #00ff00; /* Neon green border */
+            border-radius: 10px;
+            background-color: #000; /* Black background */
+            color: #00ff00; /* Neon green text color */
             transition: background-color 0.3s ease;
         }
 
         #searchInput:focus {
-            background-color: #222;
+            background-color: #002200; /* Darker black-green background on focus */
+            outline: none;
         }
 
         button {
             padding: 10px 20px;
             border: none;
-            background-color: #007bff;
-            color: white;
             border-radius: 5px;
             cursor: pointer;
-            margin-right: 10px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+            margin: 5px;
+            background-color: #00ff00; /* Neon green */
+            color: #000; /* Black text color */
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.5); /* Neon green glowing effect */
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #00cc00; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly enlarges the button on hover */
         }
 
         #content {
             margin-top: 20px;
             text-align: left;
-            color: #fff;
+            color: #00ff00; /* Neon green text color */
             animation: fadeIn 0.5s ease-in-out forwards;
         }
 
-        h1 {
-            color: #fff;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #content a {
+            color: #00ff00; /* Neon green */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #content a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="top-bar">
         <button class="home-button" onclick="window.location.href='index.html'">Home</button>
     </div>
     <div class="container">
-        <h1 style="color: white;">Wikipedia Reader</h1>
+        <h1>Wikipedia Reader</h1>
         <input type="text" id="searchInput" placeholder="Enter a topic">
         <button onclick="searchWikipedia()">Search</button>
         <button id="startButton" onclick="startReading()" disabled>Start</button>
@@ -182,12 +228,12 @@
             document.getElementById('stopButton').disabled = true;
         }
 
-        utterance.onend = function() {
+        utterance.onend = function () {
             if (isReading) {
                 startReading();
             }
         };
     </script>
 </body>
-</html>
 
+</html>
