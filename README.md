@@ -9,7 +9,7 @@ The project is designed as a multi-functional tool where each menu option repres
 - **Frontend Development**: Implementation of responsive and dynamic user interfaces using HTML, CSS, JavaScript, and modern frameworks like ReactJS.
 - **Python Programming**: Includes scripts and applications that showcase automation, data manipulation, and integration with various APIs.
 - **Docker**: Containerization of applications to ensure consistency across different environments, supporting microservices architecture.
-- **Full Stack Development**: A complete web application stack that includes frontend, backend (Node.js, Express), and database management (MongoDB, MySQL).
+- **Full Stack Development**: A complete web application stack that includes frontend, backend.
 - **Databases**: Tasks involving CRUD operations, complex queries, and database design for both SQL and NoSQL databases.
 - **Linux Operations**: Includes shell scripting, system administration tasks, and network management using Linux.
 - **AWS Services**: Utilization of various AWS cloud services for deployment, storage, and computing, integrating tools like EC2, S3, Lambda, and more.
