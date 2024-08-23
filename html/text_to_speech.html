@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Example</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #000, #003300, #003300, #000);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            color: #00ff00; /* Neon green text color */
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.5); /* Glowing effect */
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: floating 4s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #00ff00; /* Neon green */
+            text-shadow: 0 0 10px #00ff00; /* Glowing effect */
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #textToSpeak,
+        #languageSelect {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border: 2px solid #00ff00; /* Neon border */
+            background-color: #000; /* Dark background for input */
+            color: #00ff00; /* Neon text color */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3); /* Glowing effect */
+        }
+
+        #textToSpeak {
+            margin-bottom: 20px;
+        }
+
+        #languageSelect {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        #speakButton {
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 2px solid #00ff00; /* Neon border */
+            background-color: #000; /* Dark background for button */
+            color: #00ff00; /* Neon text color */
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3); /* Glowing effect */
+            margin: 0 10px;
+        }
+
+        #speakButton:hover {
+            background-color: #00ff00;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .home-btn {
+            background-color: #000;
+            color: #00ff00;
+            padding: 10px 20px;
+            border: 2px solid #00ff00; /* Neon border */
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .home-btn:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+        <h1>Text to Speech</h1>
+        <div class="input-container">
+            <input type="text" id="textToSpeak" placeholder="Enter text here">
+            <select id="languageSelect">
+                <option value="en-US">English (United States)</option>
+                <option value="en-GB">English (United Kingdom)</option>
+                <option value="es-ES">Spanish (Spain)</option>
+                <option value="es-MX">Spanish (Mexico)</option>
+                <option value="fr-FR">French (France)</option>
+                <option value="de-DE">German (Germany)</option>
+                <option value="it-IT">Italian (Italy)</option>
+                <option value="pt-PT">Portuguese (Portugal)</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="nl-NL">Dutch (Netherlands)</option>
+                <option value="ru-RU">Russian (Russia)</option>
+                <option value="ja-JP">Japanese (Japan)</option>
+                <option value="zh-CN">Chinese (Mandarin, China)</option>
+                <option value="ko-KR">Korean (South Korea)</option>
+                <option value="ar-AE">Arabic (United Arab Emirates)</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button id="speakButton">Speak</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('speakButton').addEventListener('click', function () {
+            var text = document.getElementById('textToSpeak').value;
+            var selectedLang = document.getElementById('languageSelect').value;
+
+            if (text.trim() !== "") {
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = selectedLang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Please enter some text to speak");
+            }
+        });
+    </script>
+</body>
+
+</html>
